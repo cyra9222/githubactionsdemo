@@ -49,5 +49,5 @@ jobs:
         
       - name: docker version
         run: |
-        docker -v
-        docker
+          docker -v
+          docker
