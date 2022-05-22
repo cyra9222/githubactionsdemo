@@ -24,6 +24,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name:  RUN AZ command
+        run: |
+          az account show
+          az group list
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -63,3 +68,5 @@ jobs:
 
       - name: docker image push
         run: docker push cyraa/demo-kotlin2.0
+
+      
