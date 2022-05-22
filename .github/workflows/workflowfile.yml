@@ -29,8 +29,14 @@ jobs:
           az account show
           az group list
 
+      - name: login with azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.azure_credentials }}'
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
+        if: always()
         run: echo Hello, world!
         
       - name: running a custom step
