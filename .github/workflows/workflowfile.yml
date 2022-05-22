@@ -24,16 +24,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name:  RUN AZ command
-        run: |
-          az account show
-          az group list
-
-      - name: login with azure
-        uses: azure/login@v1
-        with:
-          creds: '${{ secrets.azure_credentials }}'
-
       # Runs a single command using the runners shell
       - name: Run a one-line script
         if: always()
@@ -42,6 +32,17 @@ jobs:
       - name: running a custom step
         run: |
             ls -al
+            
+      - name: login with azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.azure_credentials }}'
+
+      - name:  RUN AZ command
+        run: |
+          az account show
+          az group list
+
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
